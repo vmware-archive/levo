@@ -33,8 +33,11 @@ func init() {
 	setupFlagUsage()
 }
 
+const LEVO_VERSION string = "1.0.0"
+
 func main() {
 	fmt.Printf("")
+
 	parseFlags()
 	if !checkFlags() {
 		return
@@ -73,6 +76,10 @@ func processArgs() ([]levo.GeneratedFile, error) {
 			return []levo.GeneratedFile{}, errors.New("Example files not created")
 		}
 		fmt.Println("Successfully created example directory.\nEnter that directory, take a look, and then try 'levo -config config.json'")
+		return []levo.GeneratedFile{}, nil
+	}
+	if getVersion {
+		fmt.Printf("Levo - version %v\n", LEVO_VERSION)
 		return []levo.GeneratedFile{}, nil
 	}
 
