@@ -1,0 +1,35 @@
+{
+  "Project": "test",
+  "Models": [
+    {
+      "Name": "People",
+      "Parent": "",
+      "Properties": [
+        {
+          "RemoteIdentifier": "hairy",
+          "PropertyType": "string"
+        }
+      ]
+    },
+    {
+      "Name": "Cats",
+      "Parent": "People",
+      "Properties": [
+        {
+          "RemoteIdentifier": "bald",
+          "PropertyType": "string"
+        }
+      ]
+    },
+	{
+      "Name": "Dogs",
+      "Parent": "",
+      "Properties": [
+        {
+          "RemoteIdentifier": "dog",
+          "PropertyType": "string"
+        }
+      ]
+    }
+  ]
+}

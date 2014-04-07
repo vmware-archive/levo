@@ -1,0 +1,32 @@
+{{$orig := .}}
+{{range .Models}}
+<<levo filename:{{.Name}}.nongeneric>>
+package {{$orig.PackageName}}.models;
+
+{{if hasListType .}}import java.util.List;
+{{end}}!>
+import com.google.gson.annotations.SerializedName;
+
+public abstract class Abs{{.Name}} {{if ne .Parent ""}}extends {{.Parent}}{{end}} {
+   protected static class Fields {
+   {{range $index, $prop := .Properties}}!>
+      public static final String {{snakecase $prop.RemoteIdentifier | upper}} = "{{$prop.RemoteIdentifier}}";
+   {{end}}!>
+   }
+
+   {{range $index, $prop := .Properties}}!>
+   @SerializedName(Fields.{{snakecase $prop.RemoteIdentifier | upper}}) private {{$prop.PropertyType}} m{{camelcase $prop.LocalIdentifier}};
+   {{end}}!>
+
+   {{range $index, $prop := .Properties}}!>
+   public {{$prop.PropertyType}} get{{camelcase $prop.LocalIdentifier}}() {
+      return m{{camelcase $prop.LocalIdentifier}};
+   }
+
+   public void set{{camelcase $prop.LocalIdentifier}}(final {{$prop.PropertyType}} {{$prop.LocalIdentifier}}) {
+      m{{camelcase $prop.LocalIdentifier}} = {{$prop.LocalIdentifier}};
+   }
+   {{end}}!>
+}
+<<levo>>
+{{end}}

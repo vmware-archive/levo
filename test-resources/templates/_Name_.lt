@@ -1,0 +1,4 @@
+{{$orig := .}}
+<<levo filename:{{.ProjectName}}.generic directory:levo_gen/subdir>>
+package {{$orig.PackageName}}.models;
+<<levo>>

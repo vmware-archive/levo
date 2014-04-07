@@ -1,0 +1,21 @@
+{
+  "Language": "java",
+  "ModelSchemaFileName": "test-resources/model-schema.json",
+  "TemplatesDirectory": "test-resources/templates",
+  "Mappings": [
+    {
+      "ModelNames": [
+        "People",
+        "Cats"
+      ]
+    },
+    {
+      "ModelNames": [
+        "People"
+      ],
+      "TemplateNames": [
+        "_Name_.generic.lt"
+      ]
+    }
+  ]
+}

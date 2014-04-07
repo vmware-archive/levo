@@ -1,0 +1,26 @@
+{
+  "TemplaterVersion": "1.0",
+  "BasePackage": "com.test",
+  "Language": "java",
+  "ModelSchemaFileName": "test-resources/model-schema.json",
+  "TemplatesDirectory": "test-resources/templates",
+  "Mappings": [
+    {
+      "ModelNames": [
+        "Dogs",
+        "Cats"
+      ],
+      "TemplateNames": [
+        "_Name_.generic.lt"
+      ]
+    },
+    {
+      "ModelNames": [
+        "People"
+      ],
+      "TemplateNames": [
+        "_Name_.nongeneric.lt"
+      ]
+    }
+  ]
+}
