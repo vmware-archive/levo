@@ -82,6 +82,7 @@ var packageString string
 var projectName string
 var templateFeatures templateFeatureArray
 var getTemplateFeatures bool
+var getVersion bool
 
 func setupFlags() {
 	fmt.Printf("")
@@ -112,6 +113,8 @@ func setupFlags() {
 	flag.BoolVar(&forceOverwrite, "q", false, "")
 	flag.BoolVar(&alwaysAsk, "ask", false, "When set, the commandline tool will ask for before overwriting every file. If not set, the tool will ask once and use that answer for all subsequent overwrites")
 	flag.BoolVar(&alwaysAsk, "a", false, "")
+	flag.BoolVar(&getVersion, "version", false, "Setting this flag will output Levo's version information")
+	flag.BoolVar(&getVersion, "v", false, "")
 	flag.BoolVar(&example, "example", false, "This flag will cause other flags to be ignored and will produce a directory that contains all of the files needed to form an example workspace")
 }
 
@@ -137,6 +140,7 @@ func setupFlagUsage() {
 		fmt.Printf(printFlagUsage(flag.Lookup("zip"), flag.Lookup("z"), ""))
 		fmt.Printf(printFlagUsage(flag.Lookup("quiet"), flag.Lookup("q"), ""))
 		fmt.Printf(printFlagUsage(flag.Lookup("ask"), flag.Lookup("a"), ""))
+		fmt.Printf(printFlagUsage(flag.Lookup("version"), flag.Lookup("v"), ""))
 		fmt.Printf(printFlagUsage(flag.Lookup("project"), flag.Lookup("p"), "<project_name>"))
 		fmt.Printf(printFlagUsage(flag.Lookup("package"), flag.Lookup("k"), "<package>"))
 
@@ -182,7 +186,11 @@ func parseFlags() {
 }
 
 func checkFlags() bool {
-	if configPath != "" && !configFlagGood() {
+	if getVersion {
+		return true
+	} else if example {
+		return true
+	} else if configPath != "" && !configFlagGood() {
 		fmt.Fprintf(os.Stderr, "When using -config, do not also use -model, -name, -names, -schema, or -template\n")
 		flag.Usage()
 		return false
