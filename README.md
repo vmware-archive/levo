@@ -3,14 +3,14 @@
 
 # Installation
 
-## From Source
-After you've [setup your GO workspace](http://golang.org/doc/code.html) run the following commands:
+### From Source
+Run the following commands after you've [setup your GO workspace](http://golang.org/doc/code.html).
 ```
 go get github.com/cfmobile/levo
 go build
 ```
 
-## Homebrew
+### Homebrew
 
 ```bash
 brew tap cfmobile/homebrew-tap
