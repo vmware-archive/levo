@@ -4,7 +4,7 @@
 # Installation
 
 ## From Source
-First [Setup a GO workspace](http://golang.org/doc/code.html)
+After you've [setup your GO workspace](http://golang.org/doc/code.html) run the following commands:
 ```
 go get github.com/cfmobile/levo
 go build
